@@ -46,26 +46,29 @@
         </nav>
         <!-- top-header-nav -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+            <div class="container-fluid container-lg">
                 <a class="navbar-brand" href="/">
                     <img src="@/assets/images/index.png" alt="main-logo" class="img-fluid" />
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Toggle -->
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="main-menu">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav justify-content-end">
+                            <li id="mobile_close" class="d-flex justify-content-end d-lg-none py-2 border-bottom px-1">
+                                <svg data-bs-dismiss="offcanvas" aria-label="Close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: var(--tq-blue); cursor: pointer;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#about">About</a>
                             </li>
-                            <li class="nav-item dropdown-items position-relative" @mouseover="dropdownToggleAdd" @mouseout="dropdownToggleRemove">
+                            <li class="nav-item dropdown-items position-relative">
                                 <a class="nav-link dropdown-toggle" href="#OurServices" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Services
+                                <span>Services</span>
                                 </a>
                                 <div class="dropdown-menu" id="dropdown-services" aria-labelledby="navbarDropdown">
                                     <div class="dropdown-divider"></div>
@@ -85,13 +88,13 @@
                                 <a class="nav-link" href="#testimonials">Testimonials</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Blogs</a>
+                                <a class="nav-link" href="#blogs">Blogs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact us</a>
+                                <a class="nav-link" href="#ContactUs">Contact us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Faq</a>
+                                <a class="nav-link" href="#faq">Faq</a>
                             </li>
                         </ul>
                     </div>
@@ -105,18 +108,7 @@
 
 <script>
     export default {
-        name: 'HeaderComponent',
-        methods: {
-            
-            dropdownToggleAdd(){
-                var showItems = document.getElementById('dropdown-services');
-                showItems.classList.add('show');
-            },
-            dropdownToggleRemove(){
-                var showItems = document.getElementById('dropdown-services');
-                showItems.classList.remove('show');
-            }
-        }
+        name: 'HeaderComponent'
     }
 </script>
 
@@ -149,7 +141,7 @@
  .top-header-nav::before{
     position: absolute;
     content: "";
-    background: #022e6b;
+    background: var(--tq-blue);
     width: 69%;
     height: 100%;
     left: 0;

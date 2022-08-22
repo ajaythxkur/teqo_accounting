@@ -1,21 +1,19 @@
 <template>
-<div id="app" @mousemove="mouseTrigger">
+  <div id="app">
       <HeaderComponent />
-      <router-view/>
+        <router-view/>
+      <FooterComponent />
   </div>
 </template>
 
 <script>
   import HeaderComponent from './components/common/Header.vue'
+  import FooterComponent from './components/common/Footer.vue'
   export default {
     name: 'App',
     components: {
-        HeaderComponent
-    },
-    methods: {
-      mouseTrigger(){
-
-      }
+        HeaderComponent,
+        FooterComponent
     }
   }
 </script>
@@ -24,7 +22,7 @@
 #app {
   font-family: MontserratAlternates, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; 
 }
 @font-face {
   font-family: MontserratAlternates;
@@ -59,5 +57,12 @@
   --tq-pinkish-white: #fcf9f7;
   --tq-taxation-shadow: #e2e2e2;
   --tq-bg-support: #f1ede9;
+  --tq-red: #dc3850;
+  --tq-black: #000;
+  --tq-red-pink: #ea3353;
+  --tq-form-background: rgba(255,106,64,.1);
+  --tq-box-shadow: 1px 1px 10px #d9d9d9;
+  --tq-mobile-bg: #000000bd;
+  --tq-green: #42db87;
 }
 </style>

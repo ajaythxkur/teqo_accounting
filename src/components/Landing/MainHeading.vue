@@ -1,7 +1,7 @@
 <template>
     
         <div class="col-12 col-md-12 col-lg-12">
-            <div class="services-description text-center mb-5">
+            <div class="services-description text-center mb-lg-5">
                 <h4 class="text-capitalize">{{heading}}</h4>
                 <h3>{{description}}</h3>
             </div>

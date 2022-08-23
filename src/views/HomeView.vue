@@ -3,13 +3,23 @@
     <swiper
         :slides-per-view="1"
         :space-between="50"
-        :autoplay="{ delay: 2500, disableOnInteraction: false,}"
+        :autoplay="{delay: 3500, disableOnInteraction: false}"
+        :navigation="true"
         :loop="true"
+        :modules="modules" 
+        :breakpoints="{
+          320 : {
+            navigation: false
+          },
+          767 : {
+            navigation: false
+          }
+        }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
       <swiper-slide  v-for="(data,index) in SwiperData" :key="index">
-          <div class="swipe-slider-wrapper">
+          <div class="swipe-slider-wrapper swiper-index">
               <div class="container">
                   <div class="row align-items-center">
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -40,9 +50,9 @@
 <!-- main-banner -->
 
 <div class="color-bar mt-4">
-          <div class="inner-bar"></div>
-      </div>
-      <!-- color-bar -->
+    <div class="inner-bar"></div>
+</div>
+<!-- color-bar -->
 
 <div id="about" class="about-us" v-for="(data,key) in AboutData" :key="key">
     <div class="container-fluid">
@@ -241,11 +251,18 @@
                 :slides-per-view="1"
                 @swiper="onSwiper"
                 @slideChange="onSlideChange"
-                :autoplay="{delay:2000, disableOnInteraction: false,}"
-                :navigation="true"
-                :modules="modules"
+                :autoplay="{ delay:3500, disableOnInteraction: false }"
+                navigation
                 :loop="true"
-                :pagination="{clickable: true,}"
+                :modules="modules" 
+                :breakpoints="{
+                  '320': {
+                    navigation:false
+                  },
+                  '767': {
+                    navigation:false
+                  }
+                }"
               >
                 <swiper-slide v-for="(data,index) in Testimonial" :key="index">
                     <div class="testimonial-section">
@@ -498,6 +515,7 @@
 // @ is an alias to /src
 // Import Swiper Vue.js components
   import { Swiper, SwiperSlide } from "swiper/vue";
+  import {Autoplay, Navigation} from "swiper";
   import 'swiper/css';
   import 'swiper/css/navigation';
   import "swiper/css/autoplay";
@@ -532,7 +550,7 @@ export default {
             AboutData:[
                 {
                     heading: 'about',
-                    captain: 'We committed to your Success',
+                    caption: 'We committed to your Success',
                     firstPara: 'Teqo accounting is a firm based in Surrey, BC which is a trusted bookkeeping, tax and accounting services provider for small to medium sized enterprises across British Columbia.',
                     secondPara: 'Our experienced staff is capable to handle the accounting aspect of your business, while letting you focus on your business.',
                     thirdPara: "Teqo Accounting provides dedicated bookkeeping support with a set of unique features and it doesn't matter how complex is your accounting."
@@ -650,17 +668,9 @@ export default {
         }
     },
     setup() {
-        const onSwiper = (swiper) => {
-            console.log(swiper);
-        };
-        const onSlideChange = () => {
-            console.log('slide change');
-        };
         
         return {
-            onSwiper,
-            onSlideChange,
-
+            modules: [Autoplay, Navigation],
         };
     },
  
@@ -672,6 +682,24 @@ export default {
 /* index css */
 .main-banner {
     padding-top: 198px;
+}
+.main-banner .swiper .swiper-button-prev::after, .main-banner .swiper .swiper-button-next::after{
+  color: var(--tq-white);
+  font-size: 35px;
+}
+.testimonial-carousel .swiper .swiper-button-prev::after, .testimonial-carousel .swiper .swiper-button-next::after{
+  color: var(--tq-white);
+  font-size: 18px;
+  font-weight: 700;
+}
+.testimonial-carousel .swiper .swiper-button-prev, .testimonial-carousel .swiper .swiper-button-next{
+  height: 50px;
+  width: 50px;
+  background-color: var(--tq-orange);
+  opacity: 0.7;
+}
+.testimonial-carousel .swiper .swiper-button-prev:hover, .testimonial-carousel .swiper .swiper-button-next:hover{
+  opacity: 1;
 }
 .about-us, #OurServices, .bus-support, .testimonial, .contact-us, .questions {
     padding-top: 150px;
@@ -1102,12 +1130,12 @@ export default {
     width: 87%;
   }
 }
-@media all and (min-width: 320px) and (max-width: 1200px) {
+@media all and (min-width: 320px) and (max-width: 1199px) {
     .accounting-section {
         padding-top: 50px;
     }
 }
-@media all and (min-width: 320px) and (max-width: 992px) {
+@media all and (min-width: 320px) and (max-width: 991px) {
     .swipe-slider-wrapper{
         background-image: unset;
         padding: 0;
@@ -1165,9 +1193,14 @@ export default {
     .swiper-slider-right p, .swiper-slider-right button{
         font-size: 15px;
     }
-   
+    .main-banner .swiper .swiper-button-prev,
+    .main-banner .swiper .swiper-button-next,
+    .testimonial-carousel .swiper .swiper-button-prev,
+    .testimonial-carousel .swiper .swiper-button-next {
+        display: none !important;
+    }
 }
-@media all and (min-width: 320px) and (max-width: 576px) {
+@media all and (min-width: 320px) and (max-width: 577px) {
     .image-services img{
         width: 70%;
     }

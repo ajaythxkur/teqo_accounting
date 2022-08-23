@@ -160,7 +160,7 @@ a.navbar-brand img {
     font-size: 15px;
     font-weight: 600;
 }
-.main-menu ul li a:hover, .main-menu ul li a:focus{
+.main-menu ul li a:hover, .main-menu ul li a:focus-visible{
     color: var(--tq-gray) !important;
 }
 .dropdown-items .dropdown-menu {
